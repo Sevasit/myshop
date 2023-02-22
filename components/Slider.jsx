@@ -39,7 +39,7 @@ const Slider = () => {
         ))}
         <div className="absolute inset-10 flex justify-center items-center z-10 ">
           <div className="flex flex-col items-center gap-6 md:gap-28">
-            <p className="text-2xl md:text-[6rem] text-white">
+            <p className="text-2xl md:text-[5rem] text-white">
               Pick your lifestyle
             </p>
             <button className="text-xs md:text-xl text-white font-bold w-[150px] bg-black hover:bg-rose-600 duration-300 rounded-md p-2 shadow-xl">
