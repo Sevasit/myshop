@@ -2,6 +2,7 @@ import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation, Autoplay } from "swiper";
 import "swiper/swiper.min.css";
+import Link from "next/link";
 
 const datas = [
   "https://images.unsplash.com/photo-1572708609354-e4b4bdfe5a93?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
@@ -42,9 +43,11 @@ const Slider = () => {
             <p className="text-2xl md:text-[5rem] text-white">
               Pick your lifestyle
             </p>
-            <button className="text-xs md:text-xl text-white font-bold w-[150px] bg-black hover:bg-rose-600 duration-300 rounded-md p-2 shadow-xl">
-              Shop Now
-            </button>
+            <Link href="/products">
+              <button className="text-xs md:text-xl text-white font-bold w-[150px] bg-black hover:bg-rose-600 duration-300 rounded-md p-2 shadow-xl">
+                Shop Now
+              </button>
+            </Link>
           </div>
         </div>
       </Swiper>

@@ -83,7 +83,7 @@ const Cart = ({ setCart }) => {
           <span>Total</span>
           <span>$100</span>
         </div>
-        <button className="text-xs text-white font-bold w-[150px] bg-black hover:bg-rose-600 duration-300 rounded-md p-2 shadow-xl mt-2">
+        <button className="text-xs text-white font-bold w-[200px] bg-black hover:bg-rose-600 duration-300 rounded-md p-2 shadow-xl mt-2 capitalize">
           order to checkout
         </button>
         <p className="mt-3 cursor-pointer text-rose-600 capitalize text-sm font-medium">
