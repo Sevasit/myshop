@@ -38,10 +38,12 @@ const Navbar = () => {
           </Link>
         </div>
         <div className="flex items-center gap-5">
-          <AiFillShopping
-            onClick={() => setCart((el) => !el)}
-            className="text-base md:text-2xl hover:text-rose-600 duration-300 cursor-pointer"
-          />
+          <div className=" relative" onClick={() => setCart((el) => !el)}>
+            <AiFillShopping className="text-base md:text-2xl hover:text-rose-600 duration-300 cursor-pointer" />
+            <span className="absolute top-[-10px] right-[-10px] font-bold text-rose-600">
+              0
+            </span>
+          </div>
           <Link href="https://github.com/Sevasit" target="_blank">
             <AiFillGithub className="text-base md:text-2xl hover:text-rose-600 duration-300 cursor-pointer" />
           </Link>
