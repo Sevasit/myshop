@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { AiFillPlusSquare, AiFillMinusSquare } from "react-icons/ai";
 
 function productsId() {
   const images = {
@@ -7,6 +8,7 @@ function productsId() {
   };
 
   const [seleactImg, setSelectImg] = useState("img1");
+  const [quantity, setQuantity] = useState(0);
   return (
     <>
       <div className="flex flex-col gap-3 md:flex-row md:gap-[10%] px-[5%] py-3">
@@ -44,6 +46,17 @@ function productsId() {
           <div className="flex gap-2 font-semibold">
             <p className=" text-gray-600 line-through">$100</p>
             <p>$50</p>
+          </div>
+          <div className="flex gap-2 items-center">
+            <AiFillMinusSquare
+              className=" text-rose-600 cursor-pointer text-xl"
+              onClick={() => setQuantity((qty) => (qty === 1 ? 1 : qty - 1))}
+            />
+            <p>{quantity}</p>
+            <AiFillPlusSquare
+              className=" text-rose-600 cursor-pointer text-xl"
+              onClick={() => setQuantity((qty) => qty + 1)}
+            />
           </div>
           <button className="text-xs text-white font-bold w-[200px] bg-black hover:bg-rose-600 duration-300 rounded-md p-2 shadow-xl mt-2 capitalize">
             add to cart
