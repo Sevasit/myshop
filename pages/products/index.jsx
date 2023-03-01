@@ -35,7 +35,7 @@ const products = () => {
                 id="ring"
                 value="ring"
               />
-              <label htmlFor="ring">ring</label>
+              <label htmlFor="ring">accessories</label>
             </div>
           </div>
           <div className="flex flex-col gap-2 mb-2">
