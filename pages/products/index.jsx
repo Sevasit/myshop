@@ -1,8 +1,22 @@
 import List from "@/components/List";
 import React, { useState } from "react";
+import useFetch from "@/hooks/useFetch";
 
 const products = () => {
-  const [price, setPrice] = useState(0);
+  const [price, setPrice] = useState(500);
+  const { data, loading, error } = useFetch(`/categories`);
+  const [selectCat, setSelectCat] = useState([]);
+
+  const handleChange = (e) => {
+    const value = e.target.value;
+    const isChecked = e.target.checked;
+
+    setSelectCat(
+      isChecked
+        ? [...selectCat, value]
+        : selectCat.filter((item) => item !== value)
+    );
+  };
 
   return (
     <>
@@ -10,33 +24,22 @@ const products = () => {
         <div className="h-[400px] sticky top-10 capitalize p-2 rounded-lg shadow-lg">
           <div className="flex flex-col gap-2 mb-2">
             <h2 className=" font-bold text-base">product categories</h2>
-            <div className="flex flex-row gap-2">
-              <input
-                className="accent-rose-600"
-                type="checkbox"
-                id="T-shirt"
-                value="T-shirt"
-              />
-              <label htmlFor="T-shirt">T-shirt</label>
-            </div>
-            <div className="flex flex-row gap-2">
-              <input
-                className="accent-rose-600"
-                type="checkbox"
-                id="Snap-back"
-                value="Snap-back"
-              />
-              <label htmlFor="Snap-back">Snap-back</label>
-            </div>
-            <div className="flex flex-row gap-2">
-              <input
-                className="accent-rose-600"
-                type="checkbox"
-                id="ring"
-                value="ring"
-              />
-              <label htmlFor="ring">accessories</label>
-            </div>
+            {error
+              ? "Something went wrong"
+              : loading
+              ? "Loading"
+              : data?.map((item) => (
+                  <div className="flex flex-row gap-2" key={item.id}>
+                    <input
+                      className="accent-rose-600"
+                      type="checkbox"
+                      id={item.id}
+                      value={item.id}
+                      onChange={handleChange}
+                    />
+                    <label htmlFor={item.id}>{item.attributes.title}</label>
+                  </div>
+                ))}
           </div>
           <div className="flex flex-col gap-2 mb-2">
             <h2 className=" font-bold text-base">filter by price</h2>
@@ -56,7 +59,7 @@ const products = () => {
             alt=""
             className="w-[100%] h-[400px]"
           />
-          <List />
+          <List selectCat={selectCat} price={price} />
         </div>
       </div>
     </>
