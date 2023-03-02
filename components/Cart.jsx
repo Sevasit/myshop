@@ -16,7 +16,7 @@ const Cart = ({ setCart }) => {
   };
 
   const stripePromise = loadStripe(
-    "pk_test_51M7t03IqYw5nJLwEMsgRXtWFqPtOGj8nGhEafObiyLJVpMNvl8viViJI8EnnbuUx62Ci1BLZ19JSyZ2SoEwzhdrt00dkP3EMIc"
+    "TOKEN"
   );
 
   const handlePayment = async () => {
