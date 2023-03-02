@@ -1,13 +1,15 @@
 import React, { useState } from "react";
-
+import { useDispatch } from "react-redux";
 import { AiFillPlusSquare, AiFillMinusSquare } from "react-icons/ai";
 import useFetch from "@/hooks/useFetch";
 import { useRouter } from "next/router";
+import { addToCart } from "@/Redux/cartReducer";
 
 const productsId = () => {
   const [seleactImg, setSelectImg] = useState("img1");
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
   let { query } = useRouter();
+  const dispath = useDispatch();
 
   const { data, loading, error } = useFetch(
     `/products/${query.productId}?populate=*`
@@ -77,7 +79,21 @@ const productsId = () => {
                 onClick={() => setQuantity((qty) => qty + 1)}
               />
             </div>
-            <button className="text-xs text-white font-bold w-[200px] bg-black hover:bg-rose-600 duration-300 rounded-md p-2 shadow-xl mt-2 capitalize">
+            <button
+              className="text-xs text-white font-bold w-[200px] bg-black hover:bg-rose-600 duration-300 rounded-md p-2 shadow-xl mt-2 capitalize"
+              onClick={() =>
+                dispath(
+                  addToCart({
+                    id: data.id,
+                    title: data.attributes.title,
+                    desc: data.attributes.desc,
+                    price: data.attributes.price,
+                    img: data.attributes.img1.data.attributes.url,
+                    quantity,
+                  })
+                )
+              }
+            >
               add to cart
             </button>
           </div>

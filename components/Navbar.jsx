@@ -7,10 +7,12 @@ import {
 } from "react-icons/ai";
 import Cart from "./Cart";
 import Link from "next/link";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const [menu, setMenu] = useState(false);
   const [cart, setCart] = useState(false);
+  const products = useSelector((state) => state.cart.products);
 
   return (
     <div className="flex justify-between items-center h-[120px] max-w-[1600px] mx-auto px-5">
@@ -41,7 +43,7 @@ const Navbar = () => {
           <div className=" relative" onClick={() => setCart((el) => !el)}>
             <AiFillShopping className="text-base md:text-2xl hover:text-rose-600 duration-300 cursor-pointer" />
             <span className="absolute top-[-10px] right-[-10px] font-bold text-rose-600">
-              0
+              {products.length}
             </span>
           </div>
           <Link href="https://github.com/Sevasit" target="_blank">
